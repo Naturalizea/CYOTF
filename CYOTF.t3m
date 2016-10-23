@@ -19,6 +19,7 @@
 -lib adv3/adv3
 -lib Core/Core
 -source CYOTF
+-lib "Stories/The Forest/Forest"
 
 -res
 GameInfo.txt

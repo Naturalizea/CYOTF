@@ -15,6 +15,7 @@ ContributionBanner: CustomBannerWindow
     bannerArgs = [nil, BannerAfter, statuslineBanner, BannerTypeText, BannerAlignTop, 1, BannerSizeAbsolute, BannerStyleBorder]
 
     isActive = nil;
+    currentContributionItem = nil;
 
     Update(ContributionItem)
     {
@@ -26,6 +27,8 @@ ContributionBanner: CustomBannerWindow
         local contents = '<CENTER><B>';        
         contents += ContributionItem.ChapterName;        
         contents += '</B> By ' + ContributionItem.Author + '</CENTER>';
+        
+        currentContributionItem = ContributionItem;
         
         updateContents(contents);
     }

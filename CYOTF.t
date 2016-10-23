@@ -42,11 +42,12 @@ MCurrentHook : Hook
 {
     event()
     {
-        if (gameMain.currentContributionItem != nil)
+        if (ContributionBanner.currentContributionItem != nil)
         {
-            "Currently in <q><<gameMain.currentContributionItem.ChapterName>></q> by <<gameMain.currentContributionItem.Author>>. Created on <<gameMain.currentContributionItem.Date>>.";
+            "Currently in <q><<ContributionBanner.currentContributionItem.ChapterName>></q> by <<ContributionBanner.currentContributionItem.Author>>. 
+            Created on <<ContributionBanner.currentContributionItem.Date>>.";
             "<br><br>";
-            "<<gameMain.currentContributionItem.Description>>";
+            "<<ContributionBanner.currentContributionItem.Description>>";
         }
         else
         {
@@ -62,16 +63,55 @@ MCurrentHook : Hook
 
 gameMain: GameMainDef
 {
-    initialPlayerChar = me
-    currentContributionItem = nil
+    initialPlayerChar = Player
+    
+    showIntro()
+    {
+        randomize();
+        
+        "Enable debug mode (enable choices when random)? ";
+        choiceBanner.debugmode = PresentChoice([['Yes',TrueHook],['No',FalseHook]]);
+        "<br><br>";
+        "Choose your story : ";
+        local choiceArray = [];
+        forEachInstance(IntroHook, {x: choiceArray += [[x.name,x]]});
+        choiceArray += [['Random',RandomIntroHook]];
+
+        return PresentChoice(choiceArray);
+    }
+    
+    ChangePlayerInto(newPlayer)
+    {
+        newPlayer.name = libGlobal.playerChar.name;
+        newPlayer.isHim = libGlobal.playerChar.isHim;
+        newPlayer.isHer = libGlobal.playerChar.isHer;
+        foreach (local item in libGlobal.playerChar.contents)
+        {
+           item.moveInto(newPlayer);
+           if (item.isWornBy(libGlobal.playerChar))
+           {
+               item.makeWornBy(newPlayer);
+           }
+        }
+        
+        newPlayer.moveIntoForTravel(libGlobal.playerChar.location);
+        libGlobal.playerChar.moveIntoForTravel(nil);
+        setPlayer(newPlayer);
+    }
     
 }
 
+Player: Actor { }
 
-startRoom: Room 
+class IntroHook : Hook {}
+
+RandomIntroHook : Hook
 {
-    name = 'Start Room'
-    desc = "This is the starting room. "
+    event()
+    {
+        local choiceArray = [];
+        forEachInstance(IntroHook, {x: choiceArray += [[x.name,x]]});   
+        
+        ChooseRandomChoice(choiceArray);
+    }
 }
-
-+ me: Actor;

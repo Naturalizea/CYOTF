@@ -26,6 +26,8 @@ choiceBanner: CustomBannerWindow
             deactivate();
         }
     }
+    
+    debugmode = nil;
 }
 
 PresentChoiceFrom(choiceArray, pos)
@@ -107,6 +109,11 @@ PresentChoiceFrom(choiceArray, pos)
 
 ChooseRandomChoice(choiceArray)
 {
+    if (choiceBanner.debugmode == true)
+    {
+        return PresentChoice(choiceArray);
+    }
+
     local randomChoiceIndex = rand(choiceArray.length)+1;
     local choiceResults = new LookupTable();
     

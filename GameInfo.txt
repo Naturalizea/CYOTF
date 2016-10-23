@@ -1,0 +1,13 @@
+IFID: bdaaea0f-1635-4727-a46e-861b20437474
+Name: Choose Your Own Transformation
+Byline: by Naturalizea
+HtmlByline: by <a href="mailto:Naturalizea@gmail.com"> Naturalizea</a>
+AuthorEmail: Naturalizea <Naturalizea@gmail.com>
+Desc: Open-source, interactive choose your own adventure type game, focusing on transformation.
+HtmlDesc: Open-source, interactive choose your own adventure type game, focusing on transformation.
+Version: 1
+ReleaseDate: 2016-10-23
+Language: en-US
+LicenseType: Freeware
+CopyingRules: Nominal cost only; compilations allowed
+PresentationProfile: Default

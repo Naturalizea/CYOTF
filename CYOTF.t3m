@@ -17,6 +17,7 @@
 ##sources
 -lib system
 -lib adv3/adv3
+-lib Core/Core
 -source CYOTF
 
 -res

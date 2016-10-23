@@ -6,6 +6,7 @@ build:ext resfile cnt:I:0
 build:defaults set:I:1
 watch win:pos:R:312,572,596,688
 watch win:vis:I:0
+src win split:Core\Core.tl:S:0:0.000000
 key bindings:Text Editor:S:0:Ctrl+F3 = Edit.SearchIncremental
 key bindings:Text Editor:S:1:Down = Edit.LineDown
 key bindings:Text Editor:S:2:Ctrl+Down = Edit.LineScrollDown
@@ -98,6 +99,8 @@ watch win:expression list 0:S:0:getNominalOwner().name()
 watch win:expression list 0:S:1:getNominalOwner()
 ask save on build::I:0
 build:zipfile:S:0:CYOTF.zip
+src win selrange:Core\Core.tl:S:0:0,0
+src win selrange:Core\Core.tl:S:1:0,0
 watch win:sep xpos 0:I:260
 watch win:sep xpos 1:I:142
 key bindings:Global:S:0:Ctrl+A = Edit.SelectAll
@@ -149,13 +152,14 @@ build:installer options:S:0:name=CYOTF
 build:installer options:S:1:savext=CYOTF
 search:start at top:I:0
 EditToolbar:rebarNewLine:I:1
+src win edit mode:Core\Core.tl:S:0:TADS 3 Library
 proj search:exact case:I:0
 DocToolbar:rebarVis:I:1
 auto-script:quit sequences:S:0:<nocase>[<]line[>]<space>*q(uit)?<space>*
 auto-script:quit sequences:S:1:<nocase>[<]line[>]<space>*y.*
 SearchToolbar:rebarIndex:I:2
 search:wrap:I:1
-auto-script:next-id:I:1
+auto-script:next-id:I:4
 SearchToolbar:rebarWidth:I:253
 search:text:S:0:
 search:text:S:1:
@@ -177,6 +181,9 @@ search:exact case:I:0
 build on run::I:1
 mdi win list::S:0::log
 mdi win list::S:1:CYOTF.t
+mdi win list::S:2:Core\ContributionBanner.t
+mdi win list::S:3:Core\MultipleChoice.t
+mdi win list::S:4:Core\CustomBanner.t
 build:webpage dir:S:0:web
 main win pos::R:-8,-8,1928,1048
 build:srczipfile:S:0:CYOTFSource.zip
@@ -191,6 +198,7 @@ script win:vis:I:1
 build:use charmap:I:0
 EditToolbar:rebarIndex:I:1
 hist win vis::I:0
+line wrap:Core\Core.tl:S:0:N
 editor:cmdline:S:0:%f
 EditToolbar:rebarWidth:I:954
 build:include_files:S:0:tads.h
@@ -224,7 +232,7 @@ build:debug_image_file:S:0:debug\CYOTF.t3
 editor:program:S:0:Notepad.EXE
 find dialog:pos:R:1360,208,1804,460
 search:regex:I:0
-mdi tab order::S:0:0,1
+mdi tab order::S:0:1,4,2,3,0
 build:rlsgam:S:0:CYOTF.t3
 EditToolbar:rebarVis:I:1
 key bindings:defaults loaded:I:1
@@ -244,6 +252,9 @@ DocToolbar:rebarNewLine:I:0
 MenuBar:rebarIndex:I:0
 mdi win title::S:0:
 mdi win title::S:1:CYOTF.t
+mdi win title::S:2:Core\ContributionBanner.t
+mdi win title::S:3:Core\MultipleChoice.t
+mdi win title::S:4:Core\CustomBanner.t
 search:dir:I:1
 MenuBar:rebarWidth:I:-1
 build:installer prog:S:0:CYOTF_Setup.exe

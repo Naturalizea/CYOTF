@@ -20,6 +20,7 @@
 -lib Core/Core
 -source CYOTF
 -lib "Stories/The Forest/Forest"
+-lib Stories/Termites/Termites
 
 -res
 GameInfo.txt

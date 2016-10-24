@@ -15,7 +15,7 @@ ForStartHook : IntroHook
     name = 'The Forest'
     event()
     {
-        clearScreen();
+        
         Player.moveInto(ForForest);
         
         local genderArray = [
@@ -26,6 +26,9 @@ ForStartHook : IntroHook
         "<br>Are you male or female?<br>";
         PresentChoice(genderArray);
         
+        clearScreen();
+        "You wake up, and find yourself lost deep within a forest. You don't know how you got here, but it seems that all you can really do is wonder around and try
+        to find something.";        
         ContributionBanner.Update(ForStartContrib);
     }
 }
@@ -52,7 +55,16 @@ ForFemaleHook : Hook
 
 ForForest : OutdoorRoom
 {
-    roomName = 'Lost on a forest'
+    name = 'Lost on a forest'
+    
+    north = ForForestRandomEncounterConnector
+    south = ForForestRandomEncounterConnector
+    west = ForForestRandomEncounterConnector
+    east = ForForestRandomEncounterConnector
+    northwest = ForForestRandomEncounterConnector
+    southwest = ForForestRandomEncounterConnector
+    northeast = ForForestRandomEncounterConnector
+    southeast = ForForestRandomEncounterConnector
 }
 
 ForForestRandomEncounterConnector : PathPassage

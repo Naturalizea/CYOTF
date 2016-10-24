@@ -166,7 +166,7 @@ ChooseRandomOrderedHook(hookType)
     for (local x = 0; x < hookArray.length(); x++)
     {
         local hook = hookArray[x+1][2];
-        if (hook.IsValid())
+        if (hook.isValid())
         {
             local stop = hook.event();
             

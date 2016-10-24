@@ -16,7 +16,7 @@ ForStartHook : IntroHook
     event()
     {
         clearScreen();
-        Player.moveInto(ForRoom);
+        Player.moveInto(ForForest);
         
         local genderArray = [
             ['Male',ForMaleHook],
@@ -35,6 +35,7 @@ ForMaleHook : Hook
     event()
     {
         libGlobal.playerChar.isHim = true;
+        libGlobal.playerChar.Tags += 'MALE';
         libGlobal.playerChar.isHer = nil;
     }
 }
@@ -44,11 +45,30 @@ ForFemaleHook : Hook
     event()
     {
         libGlobal.playerChar.isHer = true;
+        libGlobal.playerChar.Tags += 'FEMALE';
         libGlobal.playerChar.isHim = nil;
     }
 }
 
-ForRoom : OutdoorRoom
+ForForest : OutdoorRoom
 {
     roomName = 'Lost on a forest'
 }
+
+ForForestRandomEncounterConnector : PathPassage
+{
+    destination = ForForest
+    isCircularPassage = true
+    dobjFor(TravelVia)
+    {
+        action()
+        {
+            
+            local choiceArray = [];
+            forEachInstance(ForForestTravelHook, {x: choiceArray += [[x.name,x]]});
+            return ChooseRandomChoice(choiceArray);
+        }
+    }
+}
+
+ForForestTravelHook : Hook {}

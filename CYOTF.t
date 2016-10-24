@@ -101,7 +101,10 @@ gameMain: GameMainDef
     
 }
 
-Player: Actor { }
+Player: Actor { 
+    Tags = []
+
+}
 
 class IntroHook : Hook {}
 

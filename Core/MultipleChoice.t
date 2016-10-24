@@ -113,6 +113,8 @@ ChooseRandomChoice(choiceArray)
     {
         return PresentChoice(choiceArray);
     }
+    
+    choiceArray = FilterValid(choiceArray);
 
     local randomChoiceIndex = rand(choiceArray.length)+1;
     local choiceResults = new LookupTable();
@@ -127,7 +129,21 @@ ChooseRandomChoice(choiceArray)
 
 PresentChoice(choiceArray, removeChoice = nil)
 {
+   choiceArray = FilterValid(choiceArray);
    return PresentChoiceFrom(choiceArray, 1);
+}
+
+FilterValid(choiceArray)
+{
+    foreach (local c in choiceArray)
+    {
+        if (!c[2].isValid())
+        {
+            choiceArray = choiceArray.removeElementAt(choiceArray.indexOf(c));
+        }
+    }
+    
+    return choiceArray;
 }
 
 
@@ -140,8 +156,6 @@ RemoveFromArray(choiceArray, id)
     }
     return choiceArray;
 }
-
-
 
 ChooseRandomOrderedHook(hookType)
 {
@@ -183,7 +197,7 @@ class Hook : object
 {
     name = ''
     rank = 100;
-    IsValid()
+    isValid()
     {
         return true;
     }

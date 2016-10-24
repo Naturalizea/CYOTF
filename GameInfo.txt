@@ -6,7 +6,7 @@ AuthorEmail: Naturalizea <Naturalizea@gmail.com>
 Desc: Open-source, interactive choose your own adventure type game, focusing on transformation.
 HtmlDesc: Open-source, interactive choose your own adventure type game, focusing on transformation.
 Version: 1
-ReleaseDate: 2016-10-23
+ReleaseDate: 2016-10-24
 Language: en-US
 LicenseType: Freeware
 CopyingRules: Nominal cost only; compilations allowed
